@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Leaf Recogniser</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<style>
+    body { background-color: rgb(225, 210, 184);}
+
+    #content{
+        text-align: center;
+        padding: 100px 0;
+        font-size: 200%;
+    }
+    
+    /* .textbox {width: 1000px; height: 30px}*/
+    .submit {width: 200px; height: 50px}
+    input[type=submit]:hover {
+    padding:5px 15px; 
+    background:#e3e3e3; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+} 
+</style> 
+</head>
+
+<body>
+    <div>
+        <h1 style="text-align:center; padding: 50px 0px; font-size:400%; color:rgba(3, 15, 27, 0.589); background-color: #e3e3e3; padding-top: 10px; padding-bottom: 10px;">Plant Leaf Recogniser</h1>
+    </div> 
+    <div id="content"> 
+        <h2>Select a file to upload</h2>
+        <p>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+        </p>
+        {% if filename %}
+            <div>
+                <!-- <img src="{{ url_for('display_image', filename=filename) }}"> -->
+                <h2>{{value2}}</h2>
+            </div>
+        {% endif %}    
+        <form method="post" action="/" enctype="multipart/form-data">
+            <!-- <input type="text" class="textbox" name="url" id="url" placeholder="Enter Url"> -->
+            <!-- <textarea name="url" rows="10" id="url" cols="100"></textarea> -->
+            <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+            <br><br>
+            <!-- <input style="font-size:25px" type="submit" class="submit" name="submit" id="submit" value="Recognise">  -->
+            <input type="submit" value="Submit" class="btn btn-info">
+        </form>
+    </div>    
+</body>
+</html>
